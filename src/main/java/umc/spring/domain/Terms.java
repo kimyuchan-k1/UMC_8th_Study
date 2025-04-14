@@ -20,6 +20,8 @@ public class Terms extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // 세부사항 조정
+    @Column(columnDefinition = "VARCHAR(20)")
     private String title;
 
     private String text;
