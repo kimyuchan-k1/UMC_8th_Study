@@ -19,6 +19,8 @@ public class Review extends BaseEntity {
 
     private String title;
 
+    private String body;
+
     private Float score;
 
     // 1대다 관계
