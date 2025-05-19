@@ -1,12 +1,13 @@
 package umc.spring.domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
+import umc.spring.domain.mapping.MemberPrefer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -20,6 +21,12 @@ public class FoodCategory extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // 디테일 추가
+    @Column(length = 15, nullable = false)
     private String name;
+
+    // 1대다 관계 추가
+    @OneToMany(mappedBy = "foodCategory", cascade = CascadeType.ALL)
+    private List<MemberPrefer> memberPreferList = new ArrayList<>();
 
 }

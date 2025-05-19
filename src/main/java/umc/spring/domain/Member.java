@@ -4,6 +4,7 @@ package umc.spring.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import umc.spring.domain.common.BaseEntity;
+import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.Gender;
 import umc.spring.domain.enums.MemberStatus;
 import umc.spring.domain.enums.SocialType;
@@ -28,12 +29,9 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    //TODO : address 통합해서 복합 값으로 embedding 해서 사용하면 안되는지
-    @Column(nullable = false, length = 40)
-    private String address;
-
-    @Column(nullable = false, length = 40)
-    private String specAddress;
+    //TODO : address 통합해서 복합 값 객체로 만들어 사용
+    @Embedded()
+    private Address address;
 
     @Column(nullable = false, length = 50)
     private String email;
@@ -60,7 +58,7 @@ public class Member extends BaseEntity {
     @OneToMany(mappedBy = "member" , cascade = CascadeType.ALL)
     private List<MemberMission> memberMissionList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member" , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<MemberPrefer> memberPreferList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member" , cascade = CascadeType.ALL)
