@@ -40,5 +40,6 @@ public class StoreRepositoryImpl implements StoreRepositoryCustom{
                 .from(store)
                 .where(booleanBuilder)
                 .fetch();
+
     }
 }
