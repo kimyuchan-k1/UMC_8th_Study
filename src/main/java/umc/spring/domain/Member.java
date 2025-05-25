@@ -3,6 +3,9 @@ package umc.spring.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.Gender;
@@ -18,6 +21,8 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
@@ -33,9 +38,11 @@ public class Member extends BaseEntity {
     @Embedded()
     private Address address;
 
-    @Column(nullable = false, length = 50)
+    // nullable - true 로 잠시 변경
+    @Column(nullable = true, length = 50)
     private String email;
 
+    @ColumnDefault("0")
     private Integer point;
 
     @Enumerated(EnumType.STRING)
