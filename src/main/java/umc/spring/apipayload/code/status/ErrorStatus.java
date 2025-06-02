@@ -27,7 +27,10 @@ public enum ErrorStatus implements BaseErrorCode {
 
     // for Test
     TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트"),
-    FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOODCATEGORY4002", "찾고자 하는 값이 없습니다.");
+    FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOODCATEGORY4002", "찾고자 하는 값이 없습니다."),
+
+    // Invalid Page
+    INVALID_PAGE_EXCEPTION(HttpStatus.BAD_REQUEST, "STORE4001", "페이지 번호는 1 이상이어야 합니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
