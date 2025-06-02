@@ -20,11 +20,17 @@ public enum ErrorStatus implements BaseErrorCode {
     MEMBER_NOT_FOUND(HttpStatus.BAD_REQUEST, "MEMBER4001", "사용자가 없습니다."),
     NICKNAME_NOT_EXIST(HttpStatus.BAD_REQUEST, "MEMBER4002", "닉네임은 필수 입니다."),
 
+    CHALLENGING_ALREADY(HttpStatus.BAD_REQUEST, "MISSION4001", "이미 도전 중인 미션입니다."),
+
     // 예시,,,
     ARTICLE_NOT_FOUND(HttpStatus.NOT_FOUND, "ARTICLE4001", "게시글이 없습니다."),
 
     // for Test
-    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트");
+    TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "이거는 테스트"),
+    FOOD_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "FOODCATEGORY4002", "찾고자 하는 값이 없습니다."),
+
+    // Invalid Page
+    INVALID_PAGE_EXCEPTION(HttpStatus.BAD_REQUEST, "STORE4001", "페이지 번호는 1 이상이어야 합니다.");
 
     private final HttpStatus httpStatus;
     private final String code;
