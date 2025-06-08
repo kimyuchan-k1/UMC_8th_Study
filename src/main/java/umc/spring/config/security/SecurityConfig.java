@@ -1,4 +1,4 @@
-package umc.spring.config;
+package umc.spring.config.security;
 
 
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/","/home","signup","/css/**").permitAll()
+                        .requestMatchers("/","/home","signup","members/signup","/css/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

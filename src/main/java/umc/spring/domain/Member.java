@@ -10,6 +10,7 @@ import umc.spring.domain.common.BaseEntity;
 import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.Gender;
 import umc.spring.domain.enums.MemberStatus;
+import umc.spring.domain.enums.Role;
 import umc.spring.domain.enums.SocialType;
 import umc.spring.domain.mapping.MemberAgree;
 import umc.spring.domain.mapping.MemberMission;
@@ -39,8 +40,14 @@ public class Member extends BaseEntity {
     private Address address;
 
     // nullable - true 로 잠시 변경
-    @Column(nullable = true, length = 50)
+    @Column(nullable = true, unique = true, length = 50)
     private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @ColumnDefault("0")
     private Integer point;
@@ -70,6 +77,11 @@ public class Member extends BaseEntity {
 
     @OneToMany(mappedBy = "member" , cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
+
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
 
 
 }
