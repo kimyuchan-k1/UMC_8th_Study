@@ -3,6 +3,7 @@ package umc.spring.converter;
 import umc.spring.domain.Member;
 import umc.spring.domain.embedded.Address;
 import umc.spring.domain.enums.Gender;
+import umc.spring.web.dto.LoginResultDTO;
 import umc.spring.web.dto.MemberRequestDTO;
 import umc.spring.web.dto.MemberResponseDTO;
 
@@ -45,4 +46,26 @@ public class MemberConverter {
                 .memberPreferList(new ArrayList<>())
                 .build();
     }
+
+
+
+    public static LoginResultDTO toLoginResultDTO(Long memberId, String accessToken) {
+        return LoginResultDTO.builder()
+                .memberId(memberId)
+                .accessToken(accessToken)
+                .build();
+    }
+
+    public static MemberResponseDTO.MemberInfoDTO toMemberInfoDTO(Member member){
+        return MemberResponseDTO.MemberInfoDTO.builder()
+                .name(member.getName())
+                .email(member.getEmail())
+                .gender(member.getGender().name())
+                .build();
+    }
+
+
+
+
+
 }

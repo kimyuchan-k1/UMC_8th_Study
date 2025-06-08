@@ -22,6 +22,8 @@ spring:
 
 jwt:
   token:
-    secretKey: 1234567890abcdef
-    expiration: 3600
+
+    secretKey: 1234567890abcdefaldfjieojoaielkfnalkfenaiofehnoiafnadlfajljfajijefoaelfaiohoiehf
+    expiration:
+      access-token: 3600000
 
